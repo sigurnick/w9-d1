@@ -6,7 +6,7 @@ const randomNumberGame = function (player1: number, player2: number): void {
   console.log("Numero giocatore 1:", player1);
   console.log("Numero giocatore 2:", player2);
 
-  //result reference
+  //-----------------result reference----------------
   const randomNumberContainer = document.getElementById(
     "random-number"
   ) as HTMLInputElement;
@@ -17,19 +17,19 @@ const randomNumberGame = function (player1: number, player2: number): void {
     "player2-number"
   ) as HTMLInputElement;
   const resultContainer = document.getElementById("result") as HTMLInputElement;
-
+//----------------------------------------------------------
   randomNumberContainer.innerText = randomNumber.toString();
   player1Container.innerText = player1.toString();
   player2Container.innerText = player2.toString();
 
+
+  //----------------------------Condizioni---------------------------
   if (player1 === player2) {
     if (player1 === randomNumber) {
       resultContainer.innerHTML = `I giocatori hanno entrambi azzeccato il numero! random!`;
     } else {
       resultContainer.innerHTML = `Entrambi i giocatori hanno inserito lo stesso numero ma non hanno indovinato il numero random :(`;
     }
-
-
 
 
   } else {
@@ -40,6 +40,12 @@ const randomNumberGame = function (player1: number, player2: number): void {
     } else {
       let player1Close: number = randomNumber - player1;
       let player2Close: number = randomNumber - player2;
+      player1Close = Math.abs(player1Close)
+      player2Close = Math.abs(player2Close)
+
+      console.log('player1 differenza:',player1Close);
+      console.log('player2 differenza:',player2Close);
+
 
       if (player1Close > player2Close) {
         resultContainer.innerHTML = `Il giocatore 2 è arrivato più vicino al numero random avendo scelto il numero: ${player2}
